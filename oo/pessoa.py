@@ -1,4 +1,6 @@
 class Pessoa:
+    olhos = 2
+
     def __init__(self, *filhos, nome=None, idade=35):
         self.idade = idade
         self.nome = nome
@@ -10,15 +12,22 @@ class Pessoa:
 
 if __name__ == '__main__':
     ivan = Pessoa(nome='Jovenal')
-    Luciano = Pessoa(ivan, nome='Cleusa')
-    print(Pessoa.cumprimentar(Luciano))
-    print(id(Luciano))
-    print(Luciano.cumprimentar())
-    print(Luciano.nome)
-    print(Luciano.idade)
-    for filho in Luciano.filhos:
+    luciano = Pessoa(ivan, nome='Cleusa')
+    print(Pessoa.cumprimentar(luciano))
+    print(id(luciano))
+    print(luciano.cumprimentar())
+    print(luciano.nome)
+    print(luciano.idade)
+    for filho in luciano.filhos:
         print(filho.nome)
-    Luciano.sobrenome = 'Carvalho'
-    del Luciano.filhos
-    print(Luciano.__dict__)
+    luciano.sobrenome = 'Carvalho'
+    del luciano.filhos
+    luciano.olhos = 1
+    del luciano.olhos
+    print(luciano.__dict__)
     print(ivan.__dict__)
+    Pessoa.olhos = 3
+    print(Pessoa.olhos)
+    print(luciano.olhos)
+    print(ivan.olhos)
+    print(id(Pessoa.olhos), id(luciano.olhos), id(ivan.olhos))
